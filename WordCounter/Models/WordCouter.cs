@@ -7,11 +7,13 @@ namespace WordCounter.Models
     public class CountWords 
     {
         char[] AlphabeticUpper { get; set;}
+        int WordCount { get; set; }
         // string InputWord { get; set; }
         // string InputText { get; set;}
        public CountWords () 
        {
            char [] AlphabeticUpper = new char[]{'A','B','C','D','E','F','G','H','I', 'J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+           int WordCount = 0;
         //    string InputWord = inputWord;
         //    string InputText = inputText;
             
@@ -20,10 +22,33 @@ namespace WordCounter.Models
 
 
 
-        public string FindWord(string inputText)
+        public int FindWord(string inputWord, string inputText)
         {   
-            string[] inputArray = new[]{inputText};
-            return inputArray[0];
+        CountWords newCountWords = new CountWords();
+
+        char[] spearator = {' '}; 
+
+        String[] inputArray = inputText.Split(spearator,  
+           StringSplitOptions.RemoveEmptyEntries);
+        int result = 0;
+        foreach(string word in inputArray)
+        { 
+            if(inputWord == word)
+            {
+                newCountWords.WordCount ++;
+                result = newCountWords.WordCount;
+            }
+            else
+            {
+                result = 0;
+            }
+            }
+            return result;
+        }
+  
+            // string[] inputArray = new[]{inputText};
+            // inputArray.Split(String[], " ")
+            // return inputArray[0];
 
         }    
       
@@ -47,4 +72,4 @@ namespace WordCounter.Models
 
         // }
     }
-}   
+
