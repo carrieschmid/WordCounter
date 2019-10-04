@@ -19,11 +19,16 @@ namespace WordCounter.Tests {
             counter = null;
         }
 
-        [TestMethod]
+        // [TestMethod]
         // public void CheckUpperInput_CheckForNonAlphabeticUpperInputs_True () {
         //     Assert.AreEqual (true, counter.CheckUpperInput ("E"));
         // }
 
-        
+          [TestMethod]
+        public void FindWord_FindInputWordInText_String() {
+            Assert.AreEqual ("cat", counter.FindWord ("cat"));
+        }
+
+
     }
 }
