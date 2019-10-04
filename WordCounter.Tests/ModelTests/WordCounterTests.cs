@@ -5,17 +5,27 @@ namespace WordCounter.Tests {
 
     [TestClass]
     public class WordCounterTest {
-
         [TestMethod]
-        public void Circle_GetDiameter_DiameterOfCircle()
+        public void RemovePunc_RemovePuncFromPhrase_String()
         {
             //Arrange
             CountWords newCountWords = new CountWords();
             //Act
-            int result = newCountWords.FindWord("cat" , "I love my cat and cat.");
+            string result = newCountWords.RemovePunc("I love my cat.");
             //Assert
-            Assert.AreEqual(result, 2);
+            Assert.AreEqual(result, "I love my cat");
         }
+
+        // [TestMethod]
+        // public void FindWord_FindInputWordInPhrase_Int()
+        // {
+        //     //Arrange
+        //     CountWords newCountWords = new CountWords();
+        //     //Act
+        //     int result = newCountWords.FindWord("cat" , "I love my cat and cat.");
+        //     //Assert
+        //     Assert.AreEqual(result, 2);
+        // }
 
         // CountWords counter;
 
