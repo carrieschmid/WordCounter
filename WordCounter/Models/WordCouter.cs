@@ -19,41 +19,19 @@ namespace WordCounter.Models
         }
 
 
-        // public string RemovePunc (string input)
-        // {
-        //     var charsToRemove = new string[] { "@", ",", ".", ";", "'" };
-        //     foreach (var c in charsToRemove)
-        //     {
-        //         input = input.Replace(c, string.Empty);
-        //     }
-        //     return input;
+        public string RemovePunc (string input)
+        {
+            var charsToRemove = new string[] { "@", ",", ".", ";", "'" };
+            foreach (var c in charsToRemove)
+            {
+                input = input.Replace(c, string.Empty);
+            }
+            return input;
 
-        // }
-               
-        // public int FindWord(string inputWord, string inputText)
-        // {   
-        // CountWords newCountWords = new CountWords();
-        // char[] spearator = {' '}; 
-        // String[] inputArray = inputText.Split(spearator, StringSplitOptions.RemoveEmptyEntries);
-        // int result = 0;
-        // foreach(string word in inputArray)
-        // { 
-        //     if(inputWord == word)
-        //     {
-        //         newCountWords.WordCount ++;
-        //         result = newCountWords.WordCount;
-        //     }
-        //     else
-        //     {
-        //         result = 0;
-        //     }
-        //     }
-        //     return result;
-        // }
-  
+        }
 
-    public bool LettersOnly(string input)
-       {
+        public bool LettersOnly(string input)
+        {
             bool result = true;
             char[] inputArray = input.ToCharArray();
             foreach(char letter in inputArray)
@@ -72,8 +50,30 @@ namespace WordCounter.Models
                
             }
             return result; 
-       }
+        }
 
+               
+        public int FindWord(string inputWord, string inputText)
+        {   
+        CountWords newCountWords = new CountWords();
+        char[] spearator = {' '}; 
+        String[] inputArray = inputText.Split(spearator, StringSplitOptions.RemoveEmptyEntries);
+        int result = 0;
+        foreach(string word in inputArray)
+        { 
+            if(inputWord == word)
+            {
+                newCountWords.WordCount ++;
+                result = newCountWords.WordCount;
+            }
+            else
+            {
+                result = 0;
+            }
+        }
+            return result;
+        }
+  
 
     }    
       
