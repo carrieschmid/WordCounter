@@ -2,23 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WordCounter.Models 
+
+namespace WordCounter.Models
 {
+    abstract class CountMethod
+    {
+    public abstract int Count<TSource> (System.Collections.Generic.IEnumerable<TSource> source); 
+    }
     public class CountWords 
     {
-        char[] AlphabeticUpper { get; set;}
-        int WordCount { get; set; }
-        // string InputWord { get; set; }
-        // string InputText { get; set; }
-       public CountWords () 
-       {
-           int WordCount = 0;
-        //    string InputWord = "";
-        //    string InputText = "";
-            
-        }
-
-
         public string RemovePunc (string input)
         {
             var charsToRemove = new string[] { "@", ",", ".", ";", "'" };
@@ -56,29 +48,26 @@ namespace WordCounter.Models
         public int FindWord(string inputWord, string inputText)
         {   
         CountWords newCountWords = new CountWords();
-        char[] spearator = {' '}; 
-        String[] inputArray = inputText.Split(spearator, StringSplitOptions.RemoveEmptyEntries);
-        int result = 0;
-        foreach(string word in inputArray)
-        { 
-            if(inputWord == word)
-            {
-                newCountWords.WordCount ++;
-                result = newCountWords.WordCount;
-            }
-            else
-            {
-                result = 0;
-            }
+        char[] separator = {' '}; 
+        String[] inputArray = inputText.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+        var matchQuery = from word in inputArray
+                        where word == inputWord
+                        select word;
+        int wordCount = matchQuery.Count();  
+        
+        return wordCount;
+
         }
-            return result;
-        }
+
+    }
+            
+}
   
 
-    }    
+    
       
     
-}
+
 
 
 
